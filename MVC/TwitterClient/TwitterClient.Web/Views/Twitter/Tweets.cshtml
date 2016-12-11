@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TwitterClient.Entity.Model.Tweet>
+
+@{
+    ViewBag.Title = "Tweets";
+}
+
+<h2>Tweets</h2>
+@using (Html.BeginForm("Tweets", "Twitter", FormMethod.Get))
+{
+    <input type="text" name="query" value="@ViewBag.Query"/>
+    <br/>
+    <button>Search</button>
+    <br/>
+    <br/>
+}
+
+@foreach (var tweet in Model)
+{
+    <table style="border: 1px dashed">
+        <tr>
+            <td>Id:</td>
+            <td>@tweet.Id</td>
+        </tr>
+        <tr>
+            <td>Author:</td>
+            <td>@tweet.Author</td>
+        </tr>
+        <tr>
+            <td>Content:</td>
+            <td>@Html.Raw(@tweet.Content)</td>
+        </tr>
+    </table>
+    <br/>
+    <br/>
+}
